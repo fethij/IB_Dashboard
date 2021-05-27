@@ -11,6 +11,8 @@ app.set("port", process.env.PORT || 3000);
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+app.use('/views', express.static('views'));
+
 app.use(routes);
 
 app.listen(app.get("port"), function(){
@@ -65,6 +67,21 @@ const ANALYZE = '/analyze?host=hva.nl';
 // uva.nl
 // sis.hva.nl
 // mijn.uva.nl
+
+
+// host - assessment host, which can be a hostname or an IP address
+// port - assessment port (e.g., 443)
+// protocol - protocol (e.g., HTTP)
+// status - assessment status; possible values: DNS, ERROR, IN_PROGRESS, and READY.
+// ipAddress - endpoint IP address, in IPv4 or IPv6 format.
+// serverName - server name retrieved via reverse DNS
+// grade - possible values: A+, A-, A-F, T (no trust) and M (certificate name mismatch)
+// gradeTrustIgnored - grade (as above), if trust issues are ignored
+// hasWarnings - if this endpoint has warnings that might affect the score (e.g., get A- instead of A).
+// certChains[] - Server Certificate chains
+// protocolIntolerance - indicates protocol version intolerance issues:
+// issues - list of certificate issues, one bit per issue:
+// sha256Hash - sha256 hash of the certificate
 
 var links = ['hva.nl', 'uva.nl','sis.hva.nl',];
 var hva = 'hva.nl';
