@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>IB Dashboard</title>
+<link rel="stylesheet" href="Style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+$(document).ready(function () {  // you do not need document.ready in your foundation project
+  
+  // function to remove and add alt row classes
+  var updateAltRowClasses = function updateAltRowClasses() {
+    $('tbody tr').removeClass('table-row-odd'); // remove all alt row classes
+    $('tbody tr:odd').addClass('table-row-odd'); // add class to alt rows
+  }
+  
+  updateAltRowClasses(); // run function to add classes to alternating table rows
+
+
+  // toggle-able row
+  $('tbody tr').not('.hidden-row').on('click', function(){ // table row is clicked
+    var hiddenRow = $(this).next(".hidden-row"); // variable that finds the hidden content for clicked row
+    var rowExists = $(hiddenRow).length; // variable that figures out if the collapsible row already exists or not
+    if (rowExists) { // if collapsible row exists already
+      $('tbody .hidden-row').not(hiddenRow).hide(); // hide all open toggle-able rows
+      $(hiddenRow).toggle(); // toggle the row on and off
+    } else { // if collapsible row doesn't exist
+      var expRowContent = $(this).find('.hide').html(); // grab this row's hidden content and store in a variable
+      var newExpRow = '<tr class="hidden-row" style="display:none;"><td colspan="5">' + expRowContent + '</td></tr>'; // wrap hidden content in a table row
+      $(newExpRow).insertAfter(this); // insert the collapsible table row after the clicked row
+      $('tbody .hidden-row').not(hiddenRow).hide(); // hide all open toggle-able rows
+      $(this).next('.hidden-row').toggle();  // toggle the row on and off
+    }
+  });
+  
+	// list.js settings
+	var options = {
+	  valueNames: [ 'Score', 'Naam', 'IPv6', 'DNSSEC', 'HTTPS', 'Beveiligingsopties' ]
+	};
+	
+	var userList = new List('domein-lijst', options); // initiate list.js
+	userList.on('updated', updateAltRowClasses); // update alternate row classes after every new sort
+	
+	$("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#list tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+  
+  
+	$( function() {
+		$( "#slider-range" ).slider({
+			range: true,
+			min: 0,
+			max: 100,
+			values: [ 23, 70],
+			slide: function( event, ui ) {
+				$( "#amount1" ).val(ui.values[ 0 ]);
+				$( "#amount2" ).val(ui.values[ 1 ]);
+				$( "#amount1" ).css({"margin-left": ui.values[0] + 20});
+				$( "#amount2" ).css({"margin-left": ui.values[1] + 20});
+			}
+		});
+		$( "#amount1" ).val(ui.values[ 0 ]);
+				$( "#amount2" ).val(ui.values[ 1 ]);
+				$( "#amount1" ).css({"margin-left": ui.values[0] + 20});
+				$( "#amount2" ).css({"margin-left": ui.values[1] + 20});
+	} );
+	
+});
+</script>
+</head>
+<body>
+<div class="topnav">
+	<ul>
+		<li style="padding-top: 3px; padding-left: 3px"><img src="ibimg.png" width="50" height="50"></li>
+		<li style="padding: 14px 16px">IB DASHBOARD</li>
+		<li style="float:right"><a href='placeholder.html'><img src="settings.png" width="20" height="20"></a></li>
+		<li style="float:right"><a href='Statistieken.html'>Statistieken</a></li>
+		<li style="float:right"><a class="topActive" href='Domeinen.html'>Domeinen</a></li>
+		<li style="float:right"><a href='Main.ejs'>Home</a></li>
+	</ul>
+</div>
+
+<div id="opties" class="sidebar">
+  <p>FILTEROPTIES</p>
+ <p>
+  <label for="amount">Price range:</label>
+</p>
+
+<label id="amount1">0</label>
+<label id="amount2">0</label>
+ 
+<div id="slider-range">
+</div>
+</div>
+
+<div id="open">
+	<button class="collapsibleSide" onclick="filterOpen()">☰</button> 
+</div>
+
+<div class="domainsTitle">
+	<h3>Domeinen</h3>
+	<input style="margin-top: 60px; margin-left: 10px; height: 50px;" id="myInput" type="text" placeholder="Search..">
+</div>
+
+
+<div id="data" class="column">
+	<div id="domains" class="domainsData">
+ <div class="row" id="domein-lijst">
+		<div class="columns small-12">
+			<table role="grid" class="hover">
+			 	<thead>
+				    <tr>
+				    	<th class="sort" data-sort="Score">Score</th>	
+						<th class="sort" data-sort="Naam">Domein</th>
+						<th class="sort" data-sort="IPv6">IPv6</th>
+						<th class="sort" data-sort="DNSSEC">DNSSEC</th>
+				    	<th class="sort" data-sort="HTTPS">HTTPS</th>
+						<th class="sort" data-sort="Beveiligingsopties">Beveiligingsopties</th>						
+					</tr>
+				</thead>
+				<tbody id="list" class="list">
+					<tr>
+				    	<td class="Score">30</td>
+				    	<td class="Naam">Appel.nl</td>
+				    	<td class="IPv6">SLECHT</td>
+				    	<td class="DNSSEC">GOED</td>
+				    	<td class="HTTPS">GEMIDDELD
+							<div class="hide">
+							Tekst enzo
+								<div class="subnav">
+									<button class="subnavbtn">Score <i class="fa fa-caret-down"></i></button>
+									<div class="subnav-content">
+										<p>Yes</p>
+									</div>
+								</div>
+							</div>
+				    	</td>
+						<td class="Beveiligingsopties">SLECHT</td>
+				    </tr>
+				   	<tr>
+				    	<td class="Score">23</td>
+				    	<td class="Naam">hva.nl</td>
+				    	<td class="IPv6">SLECHT</td>
+				    	<td class="DNSSEC">SLECHT</td>
+				    	<td class="HTTPS">SLECHT
+							  <div class="hide">
+									Toggle-able content goes here.
+								</div>
+				    	</td>
+						<td class="Beveiligingsopties">SLECHT</td>
+				    </tr>
+				    <tr>
+				    	<td class="Score">45</td>
+				    	<td class="Naam">blub.nl</td>
+				    	<td class="IPv6">GEMIDDELD</td>
+				    	<td class="DNSSEC">SLECHT</td>
+				    	<td class="HTTPS">GEMIDDELD
+							  <div class="hide">
+									Toggle-able content goes here.
+								</div>
+				    	</td>
+						<td class="Beveiligingsopties">GOED</td>
+				    </tr>
+				    <tr>
+				    	<td class="Score">25</td>
+				    	<td class="Naam">nee.nl</td>
+				    	<td class="IPv6">GOED</td>
+				    	<td class="DNSSEC">SLECHT</td>
+				    	<td class="HTTPS">GEMIDDELD
+							  <div class="hide">
+									Toggle-able content goes here.
+								</div>
+				    	</td>
+						<td class="Beveiligingsopties">SLECHT</td>
+				    </tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	</div>
+</div>
+<script>
+var open = false;
+
+function filterOpen(){
+	if(open == false){
+		document.getElementById("opties").style.width = "250px";
+		document.getElementById("opties").style.left = "20px";
+		document.getElementById("open").style.marginLeft = "270px";
+		document.getElementById("domains").style.width = "60%";
+		document.getElementById("domains").style.marginLeft = "350px";
+		open = true;
+	} else {
+		document.getElementById("opties").style.width = "0";
+		document.getElementById("opties").style.left = "0px";
+		document.getElementById("open").style.marginLeft = "0px";
+		document.getElementById("domains").style.width = "80%";
+		document.getElementById("domains").style.marginLeft = "50px";
+		open = false;
+	}
+}
+</script>
+</body>
+</html>

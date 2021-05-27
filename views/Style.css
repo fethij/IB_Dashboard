@@ -1,0 +1,417 @@
+body {
+  font-size: 25px;
+  font-family: Arial;
+  background-color: #F1FEFF;
+}
+
+h3 {
+  color:white;
+  background-color: #000247;
+  float: left;
+  margin-top: 1px;
+  padding: 10px;
+  width: 200px;
+  text-align: center;
+}
+
+h2 {
+  color:#000247;
+  background: none;
+  float: left;
+  font-size: 20px;
+  margin-top: 1px;
+  padding: 10px;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+.topnav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #000247;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  margin-bottom: 20px;
+}
+
+.topnav li {
+  float: left;
+  color: white;
+  text-align: center;
+}
+
+.topnav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.topnav li a:hover {
+  background-color: #111;
+}
+
+.topActive {
+  background-color: #000247;
+}
+
+.mainInout {
+
+  width: 580px;
+  height: 250px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #000247;
+  padding: 10px;
+  margin-top: 50px;
+  background-color: white;
+
+}
+
+.mainInout h3 {
+  color:white;
+  background-color: #000247;
+  float: left;
+  margin-top: 1px;
+  padding: 10px;
+  width: 200px;
+  text-align: center;
+}
+
+.mainStats {
+
+  width: 580px;
+  height: 250px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #000247;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: white;
+}
+
+.mainStats h3 {
+  color:white;
+  background-color: #000247;
+  float: left;
+  margin-top: 1px;
+  padding: 10px;
+  width: 200px;
+  text-align: center;
+}
+
+.mainDomains {
+  width: 800px;
+  height: 540px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #000247;
+  padding: 10px;
+  margin-top: 50px;
+  background-color: white;
+}
+
+.mainDomains h3 {
+  color:white;
+  background-color: #000247;
+  float: left;
+  margin-top: 1px;
+  padding: 10px;
+  width: 200px;
+  text-align: center;
+}
+
+.collapsibleSide {
+  background-color: #000247;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.sidebar {
+  height: 60%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 25%;
+  left: 0;
+  background-color: white;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #000247;
+}
+
+.sidebar p {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.domainsTitle h3 {
+  color:white;
+  background-color: #000247;
+  float: left;
+  margin-top: 60px;
+  margin-left: 50px;
+  padding: 10px;
+}
+
+.domainsTitle:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.domainsData {
+  width: 80%;
+  height: 62%;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #000247;
+  padding: 10px;
+  margin-top: 10px;
+  margin-left: 50px;
+  position: fixed;
+  top: 25%;
+  transition: .5s;
+  background-color: white;
+}
+
+.domainsData h3 {
+  color:white;
+  background-color: #000247;
+  float: left;
+  margin-top: 1px;
+  padding: 10px;
+}
+
+#open {
+  transition: margin-left .5s;
+  position: absolute;
+  top: 50%;
+  padding: 0px;
+}
+
+.statsGemSmall {
+  width: 90%;
+  height: 100px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #000247;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: white;
+}
+
+.statsTotaal{
+  width: 90%;
+  height: 110px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #000247;
+  padding: 10px;
+  margin-top: 60px;
+  background-color: white;
+}
+
+.statsEigenaar {
+  width: 90%;
+  height: 250px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #000247;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: white;
+}
+
+.statsDomains {
+  width: 90%;
+  height: 540px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #000247;
+  padding: 10px;
+  margin-top: 60px;
+  background-color: white;
+}
+
+.column {
+  float: left;
+  padding: 10px;
+}
+
+.column.side {
+  width: 35%;
+}
+
+.column.middle {
+  width: 60%;
+}
+
+
+.subnav {
+  overflow: hidden;
+}
+
+.subnav .subnavbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar p:hover, .subnav:hover .subnavbtn {
+  background-color: red;
+}
+
+.subnav-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: red;
+  width: 100%;
+  z-index: 1;
+}
+
+.subnav-content p {
+  float: left;
+  color: white;
+  text-decoration: none;
+}
+
+.subnav-content p:hover {
+  background-color: #eee;
+  color: black;
+}
+
+.subnav:hover .subnav-content {
+  display: block;
+}
+
+.hide{
+	display: none;
+}
+
+
+
+
+
+
+
+/* function */
+/*front thing sizeish?*/
+  .ui-slider {
+	position: relative;
+	text-align: center;
+	width: 50%;
+	margin-left: 30px;
+}
+/*buttons*/
+.ui-slider .ui-slider-handle {
+	position: absolute;
+	z-index: 2;
+	width: 10px;
+	height: 1.2em;
+	cursor: default;
+}
+/*front position?*/
+.ui-slider .ui-slider-range {
+	position: absolute;
+	z-index: 1;
+	font-size: .7em;
+	display: block;
+	border: 0;
+	background-position: 0 0;
+}
+
+
+/*bar height*/
+.ui-slider-horizontal {
+	height: .8em;
+}
+/*button alignment*/
+.ui-slider-horizontal .ui-slider-handle {
+	top: -.3em;
+	margin-left: -.4em;
+}
+/*front thing again*/
+.ui-slider-horizontal .ui-slider-range {
+	top: 0;
+	height: 100%;
+}
+
+
+
+/*non hovered buttons*/
+.ui-state-default,
+html .ui-button.ui-state-disabled:active {
+	border: 1px solid #c5c5c5;
+	background: #f6f6f6;
+	font-weight: normal;
+	color: #454545;
+}
+
+
+/*hover buttons*/
+.ui-widget-content .ui-state-hover,
+.ui-button:focus {
+	border: 1px solid #cccccc;
+	background: #ededed;
+	font-weight: normal;
+	color: #2b2b2b;
+}
+
+
+/*barbg*/
+.ui-widget-content {
+	border: 1px solid #dddddd;
+	background: #ffffff;
+	color: #333333;
+}
+
+/*barfg*/
+.ui-widget-header {
+	border: 1px solid #dddddd;
+	background: #e9e9e9;
+	color: #333333;
+	font-weight: bold;
+}
+
+#amount1{
+	position: absolute;
+	margin-top: 20px;
+}
+
+#amount2{
+	position: absolute;
+	margin-top: 20px;
+}
