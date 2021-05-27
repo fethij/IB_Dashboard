@@ -84,21 +84,23 @@ const ANALYZE = '/analyze?host=hva.nl';
 // sha256Hash - sha256 hash of the certificate
 
 var links = ['hva.nl', 'uva.nl','sis.hva.nl',];
-var hva = 'hva.nl';
+//var hva = 'hva.nl';
 
 const axios = require('axios');
 
-axios.get(BASE_URI + "/analyze?host=" + hva)
-         .then(response => {
-        console.log(response.data.endpoints[0].grade);
-        // console.log(response.data);
-       // res.send(response.data.status);
-    })
-    .catch(error => {
-        console.log(error);
-    });
 
-    // for (link of links) {
-        
-    // }
+
+    for (link of links) {
+
+            axios.get(BASE_URI + "/analyze?host=" + link)
+            .then(response => {
+            //console.log(response.data.endpoints[0].grade);
+            console.log(response.data);
+        // res.send(response.data.status);
+            })
+            
+        .catch(error => {
+        console.log(error);
+        });
+    }
 
