@@ -10,7 +10,8 @@ https.get(BASE_URI + '/info', (response) => {
     response.on('data', (chunk) => {
         data += chunk;
     });
-
+    
+    
     response.on('end', () => {
         //return callback(data);
         console.log(JSON.stringify(data));
